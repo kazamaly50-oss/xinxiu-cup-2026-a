@@ -1,0 +1,39 @@
+{
+  "task_id": "modeling/rules-v1 (阶段0 建模岗：rules.md + 一塔两敌训练例 + Q1拆分)",
+  "date": "2026-11-25T21:32:27+08:00",
+  "what": "按 modeling/AGENT.md 11/25 晚要求起草规则口径；拆分问题1；构造一塔两敌核验场景",
+  "inputs": [
+    "A题PDF(2页)",
+    "README.md",
+    "modeling/AGENT.md",
+    "origin/codex/t0-1-geometry:geometry.py@c304a08"
+  ],
+  "outputs": [
+    "modeling/rules.md",
+    "modeling/toy_check.md",
+    "modeling/toy_check_answer.md",
+    "modeling/planning/parse/problem_parse.json",
+    "modeling/planning/classification/problem_classification.json",
+    "modeling/planning/manifests/Q1.json"
+  ],
+  "key_findings": [
+    "路径总长2995.85 m，与 T0.1 geometry.py 一致",
+    "目标选择‘连续重选 vs 锁定’为承重歧义：训练例中击杀数 0 vs 1",
+    "Q1 初步：2000元满负荷伤害上界≈16700 < 总血量17000，0漏怪很可能不可达（初步数值，未严格证明，须以 simulate.py 为准）"
+  ],
+  "pending_confirmation": [
+    "rules.md 第7节目标语义",
+    "rules.md 全部[队伍假设]项",
+    "建模手独立复算 toy_check"
+  ],
+  "rerun_command": "不适用（纯文档）；训练例参考答案由 Hermes 临时脚本计算，未入库",
+  "code_runtime_s": "不适用",
+  "ai_usage": {
+    "tool": "Hermes Agent (anthropic/claude-opus-5.5)",
+    "purpose": "题意拆分、规则草稿、训练例计算",
+    "adoption": "待复核",
+    "human_verification": "待完成"
+  },
+  "reviewer": "建模队员（待）",
+  "acceptance": "待队长验收"
+}
