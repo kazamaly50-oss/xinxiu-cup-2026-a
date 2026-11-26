@@ -70,6 +70,45 @@ class LayoutTests(unittest.TestCase):
             self.assertFalse(verify.verify_layout([(400, 200, "小塔")])["合法性"]["通过"])
         simulation.assert_not_called()
 
+    def test_map_boundary_switch(self):
+        for basis in ("center", "edge"):
+            for x in (0, 2000):
+                with self.subTest(basis=basis, x=x):
+                    towers = [(x, 1000, "小塔")]
+                    self.assertTrue(verify.validate_layout(towers, map_boundary="center_in_map",
+                                                           distance_basis=basis)["通过"])
+                    self.assertFalse(verify.validate_layout(towers, map_boundary="base_in_map",
+                                                            distance_basis=basis)["通过"])
+            towers = [(-0.001, 1000, "小塔")]
+            self.assertFalse(verify.validate_layout(towers, map_boundary="center_in_map",
+                                                    distance_basis=basis)["通过"])
+
+    def test_distance_measurement_switch(self):
+        for basis in ("center", "edge"):
+            with self.subTest(basis=basis):
+                with patch.object(verify, "dist_to_path", return_value=15):
+                    towers = [(10, 1000, "小塔"), (30, 1000, "小塔")]
+                    self.assertTrue(verify.validate_layout(towers, distance_basis=basis)["通过"])
+                    overlapping = [(10, 1000, "小塔"), (29.999, 1000, "小塔")]
+                    result = verify.validate_layout(overlapping, distance_basis=basis)
+                    self.assertFalse(result["通过"])
+                    self.assertIn("塔心距离" if basis == "center" else "塔基边缘净距",
+                                  result["问题"][0])
+                with patch.object(verify, "dist_to_path", return_value=14.999):
+                    result = verify.validate_layout(towers[:1], distance_basis=basis)
+                    self.assertFalse(result["通过"])
+                    self.assertIn("道路中心线" if basis == "center" else "道路边缘",
+                                  result["问题"][0])
+
+    def test_report_records_requested_convention(self):
+        with patch.object(verify, "simulate") as simulation:
+            report = verify.verify_layout([(400, 200, "小塔")],
+                                          map_boundary="center_in_map", distance_basis="edge")
+        self.assertEqual(report["合法性"]["口径"], {
+            "地图边界": "center_in_map", "距离基准": "edge", "允许相切": True, "状态": "口径待裁定",
+        })
+        simulation.assert_not_called()
+
     @staticmethod
     def snapshot(step, leaked):
         # 两次总漏怪数始终相同，仅交换发生漏怪的敌人编号。
