@@ -1,0 +1,83 @@
+{
+  "任务": "队内规则与成果对齐",
+  "日期": "2026-11-27T20:07:17+08:00",
+  "执行代码提交": "57fcaf0abd4a80cdd576f06ac92624d6e82046ae",
+  "分支": "codex/team-rules-alignment",
+  "远端核验": {
+    "refs/heads/codex/a1-verification": "91c7a8a514edab0a4e5b1c98ce3993443a144415",
+    "refs/heads/codex/t1-2-validation": "40d0a920b8677d5cc4f2f5f7bf7552ffc5a81378",
+    "refs/heads/main": "9c19e3a8a86fefebbfcd00388344d7000b00b4fe",
+    "refs/heads/modeling/rules-v1": "0563c1d721bd807e9976ae7698a4fd40fdbb0b13"
+  },
+  "PR": {
+    "A1": "https://github.com/kazamaly50-oss/xinxiu-cup-2026-a/pull/5",
+    "T1.2": "https://github.com/kazamaly50-oss/xinxiu-cup-2026-a/pull/6"
+  },
+  "文件SHA256": {
+    "results/T1.2-aligned.json": "a834d078b34bc6a5a0f7eebd11c6b46113cc309646039c66bb652ebad6432174",
+    "results/a1-verification-aligned.json": "d294474b5524722be3115b31a7decc807a20fe2d2945a15d3f3002d6ea53717a",
+    "results/alignment-validation.json": "6736274a34b4fee1cce18f511a3ae9b328c6151defb189fab6a333424fea7b41",
+    "handoffs/T1.2-aligned.json": "f67e5c3f690488188f2a69a35c0073fc9b77c5ede68016ddc6264ace5e6acf9b",
+    "handoffs/rules-source-check.json": "19ac829448c0902658cce58dcfb5990c2e691e1e330f3a760130d8dc8bdfecad",
+    "handoffs/rules-archive-proof.json": "c18e5094cca9531d8624a0c6db85788922e9d38dab2a0a6f1fe9f7993855a168",
+    "handoffs/alignment-integrity.json": "ef7f88128ca30841cfc6d3107ad60ee5b6b4087221b30098f9643f1b2b93291f",
+    "handoffs/rules-alignment-diff.md": "fb3845e8209fe5a02229ebb0cf8fff9d82dd2cffa4385e03cf6aa6db28a24898",
+    "modeling/rules.md": "d8b0511d65d260c34c40ca952abdb1d0914659679473046e7bccfc661da47e0d"
+  },
+  "M1摘要": {
+    "解析对拍": {
+      "理论伤害": 245.96747752497686,
+      "仿真伤害": 246.0,
+      "相对误差百分数": 0.013222266354233864,
+      "通过": true
+    },
+    "步长收敛": {
+      "dt=0.1漏怪": 8,
+      "dt=0.05漏怪": 8,
+      "通过": true
+    },
+    "极端情况": "两项测试通过；全覆盖为非问题一可行方案，数值只保留在测试明细，不纳入结果汇总。"
+  },
+  "A1摘要": {
+    "花费元": 1850,
+    "漏怪数": [
+      8,
+      8
+    ],
+    "最大步长血量差HP": 0.599999999966883,
+    "总伤害上界HP": 16710.0,
+    "上界状态": "程序已运行，推导待队员复核",
+    "最优性": "未证明最优"
+  },
+  "临界复跑说明": "已按临界复跑规则以 dt=0.01 复跑、结论不变",
+  "各进程运行时间": {
+    "M1": {
+      "秒": 3.298090900061652,
+      "展示": "3.3 s"
+    },
+    "A1回归": {
+      "秒": 1.8431263999082148,
+      "展示": "1.8 s"
+    },
+    "A1上界": {
+      "秒": 1.0295829999959096,
+      "展示": "1.0 s"
+    },
+    "1850元候选": {
+      "秒": 6.02214020001702,
+      "展示": "6.0 s"
+    }
+  },
+  "合计运行时间": "12.2 s",
+  "合计运行时间秒": 12.192940499982797,
+  "失败项": [],
+  "状态": {
+    "AI已运行": "已完成，实测通过",
+    "Hermes审核报告已收到": "T0.1/T0.2/T1.1历史报告已收到；新M1/A1/对齐待审",
+    "真人复核": "待完成",
+    "队长验收": "几何假设已裁定；成果待验收"
+  },
+  "队群消息": "未发送",
+  "main合并": "未执行",
+  "选题门槛": "保留，先复核证据再裁定"
+}
