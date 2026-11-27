@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "subquestions": [
+    {
+      "id": "Q1",
+      "primary_type": "optimization/decision",
+      "secondary_type": "simulation/scenario",
+      "confidence": "high",
+      "evidence": [
+        "要求输出为布局决策（类型/数量/位置）且带字典序目标与资金/数量/几何约束 (parse: Q1.goal, Q1.constraints)",
+        "目标值Z无闭式，须按交战规则推演得到 (parse: Q1.4)"
+      ],
+      "required_validation": [
+        "约束可行性复核",
+        "漏怪数独立重算",
+        "最优性论据（界 vs 可行解）",
+        "位置微扰/数值精度敏感性"
+      ],
+      "framing_decision_id": "q1_target_rule_semantics",
+      "risks": [
+        "目标选择语义未确认前，评估器结果不可定稿",
+        "目标函数对位置不连续（整数漏怪数），最优性难以严格证明"
+      ]
+    },
+    {
+      "id": "Q2",
+      "primary_type": "optimization/decision",
+      "secondary_type": "simulation/scenario",
+      "confidence": "high",
+      "evidence": [
+        "输出为带时间的建造/升级序列，资金随击杀动态变化 (parse: Q2)"
+      ],
+      "required_validation": [
+        "资金流不透支复核",
+        "时序可执行性",
+        "漏怪数独立重算"
+      ],
+      "framing_decision_id": null,
+      "risks": [
+        "波次间隔与数量上限的解释待确认"
+      ]
+    },
+    {
+      "id": "Q3",
+      "primary_type": "descriptive/inference",
+      "secondary_type": "simulation/scenario",
+      "confidence": "medium",
+      "evidence": [
+        "开放性设计建议，无给定度量 (parse: Q3)"
+      ],
+      "required_validation": [
+        "所提调整须有可计算指标对比"
+      ],
+      "framing_decision_id": null,
+      "risks": [
+        "易写成无模型的纯文字"
+      ]
+    }
+  ]
+}
