@@ -1,0 +1,55 @@
+{
+  "日期": "2026-11-27T20:12:37+08:00",
+  "失败项": "额外发布前检查：历史A1文件与原工作树逐字节比较不相等",
+  "逐文件差异": [
+    {
+      "文件": "results/a1-verification.json",
+      "原工作树路径": "D:\\xinxiu-cup-2026-a-a1\\results\\a1-verification.json",
+      "对齐工作树路径": "D:\\xinxiu-cup-2026-a-alignment\\results\\a1-verification.json",
+      "原文件字节数": 10434,
+      "对齐字节数": 10838,
+      "原文件CRLF数": 0,
+      "对齐CRLF数": 404,
+      "原SHA256": "c9f4fd6cc9f28eb9843e2d8d3f2fb8b9b6c5be220d4568d397982dc3a0d348f8",
+      "对齐SHA256": "2b20bfaafb3ef9d8362a682390b9553f3a90d560279a6dba506d37ce0f48a12d",
+      "原始字节相等": false,
+      "LF归一化后相等": true,
+      "JSON内容相等": true,
+      "Git提交内原始字节相等": true
+    },
+    {
+      "文件": "results/a1-candidate.json",
+      "原工作树路径": "D:\\xinxiu-cup-2026-a-a1\\results\\a1-candidate.json",
+      "对齐工作树路径": "D:\\xinxiu-cup-2026-a-alignment\\results\\a1-candidate.json",
+      "原文件字节数": 181,
+      "对齐字节数": 191,
+      "原文件CRLF数": 0,
+      "对齐CRLF数": 10,
+      "原SHA256": "7d79bd441630484dd56e97438a70407c9919910a2154accca1b9ac8d8bfe4c0a",
+      "对齐SHA256": "4c773738dbe68e6d667ab587db693870e41b22457096a853dd967cb1ab3702e3",
+      "原始字节相等": false,
+      "LF归一化后相等": true,
+      "JSON内容相等": true,
+      "Git提交内原始字节相等": true
+    }
+  ],
+  "逐敌差异": "JSON内容完全相等；本次无逐敌结局或血量变化。",
+  "规则归档仍与被锁文件逐字节相等": true,
+  "三个核心模块逐字节一致": {
+    "geometry.py": true,
+    "coverage.py": true,
+    "simulate.py": true
+  },
+  "初步定位": "原A1工作树为LF，新工作树Git检出时转为CRLF；Git提交内容和JSON数值相同。未改变断言或恢复字节，等待队长裁定。",
+  "执行失误": "检查退出码1后，同一个工具脚本仍执行了后续提交和推送；应当停止，但未正确检查返回值。",
+  "已推送对齐头": "9472293f057af0f6361e71451e28baf1c1354edb",
+  "远端回读": "9472293f057af0f6361e71451e28baf1c1354edb\trefs/heads/codex/team-rules-alignment\n9c19e3a8a86fefebbfcd00388344d7000b00b4fe\trefs/heads/main\n0563c1d721bd807e9976ae7698a4fd40fdbb0b13\trefs/heads/modeling/rules-v1\n",
+  "后续状态": "停止；尚未创建对齐PR，不合并main，不执行修复或继续推送。",
+  "建议待裁定操作": "可按原A1工作树复制这两个历史文件的原始字节，再用原断言复核；不改任何数据、规则或判据。",
+  "四种状态": {
+    "AI已运行": "M1与A1通过；交付完整性检查有待裁定项",
+    "Hermes审核报告已收到": "旧审核已收到，新成果待审",
+    "真人复核": "待完成",
+    "队长验收": "几何口径已裁定；本次交付待裁定与验收"
+  }
+}
