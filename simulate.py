@@ -31,7 +31,7 @@ def _real(value, name):
     return result
 
 
-def simulate(towers, wave, dt=0.05):
+def simulate(towers, wave, dt=0.05, *, targeting="nearest"):
     """返回一波敌人的漏怪数、逐敌结局、累计承伤曲线及游戏耗时。
 
     参数：
@@ -41,6 +41,8 @@ def simulate(towers, wave, dt=0.05):
             '速度'（正实数，米/秒）、'出发间隔'（非负实数，秒）。
             敌人编号从 1 开始，第 i 只在 (i-1)*出发间隔 时出发。
         dt：正有限实数，固定选目标步长，单位秒，默认 0.05。
+        targeting：问题三实验开关。nearest 为原规则，focus 为射程内低血量优先，
+            spread 为射程内已分配 DPS 较低者优先。
     返回：
         dict，均为可直接序列化为 JSON 的 Python 内置类型：
         '漏怪数'：int；
@@ -61,6 +63,8 @@ def simulate(towers, wave, dt=0.05):
     dt = _real(dt, "dt")
     if dt <= 0:
         raise ValueError("dt 必须大于 0")
+    if targeting not in ("nearest", "focus", "spread"):
+        raise ValueError("未知目标机制")
     keys = ("数量", "血量", "速度", "出发间隔")
     if not isinstance(wave, dict) or any(key not in wave for key in keys):
         raise ValueError("wave 必须含数量、血量、速度、出发间隔")
@@ -150,10 +154,21 @@ def simulate(towers, wave, dt=0.05):
             rates = np.zeros(len(active))
             for x, y, radius, dps in tower_data:
                 distances = np.hypot(points[:, 0] - x, points[:, 1] - y)
-                target = int(np.argmin(distances))
-                # active 升序且 argmin 返回首个最小值，故等距选择较小编号。
-                if distances[target] <= radius:
-                    rates[target] += dps
+                if targeting == "nearest":
+                    target = int(np.argmin(distances))
+                    # active 升序且 argmin 返回首个最小值，故等距选择较小编号。
+                    if distances[target] <= radius:
+                        rates[target] += dps
+                    continue
+                in_range = np.flatnonzero(distances <= radius)
+                if not len(in_range):
+                    continue
+                if targeting == "focus":
+                    target = min(in_range, key=lambda j: (hp[active[j]], active[j]))
+                else:
+                    # 本步仅分配目标，伤害仍统一结算；实验的塔顺序固定为输入顺序。
+                    target = min(in_range, key=lambda j: (rates[j], distances[j], active[j]))
+                rates[target] += dps
 
             # 5. 先选完所有塔，再统一扣血，结果不依赖塔列表的结算先后。
             for local, enemy in enumerate(active):
