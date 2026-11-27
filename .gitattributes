@@ -1,0 +1,8 @@
+# 文本在仓库和工作树统一使用 LF，覆盖本机 autocrlf 设置。
+* text=auto eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.csv text eol=lf
+*.txt text eol=lf
+*.npz binary
