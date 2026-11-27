@@ -30,7 +30,8 @@ BASELINE_LF = {
     "geometry.py": "c2d40cff460e3a725381133a79ed9102deae603dbf55a18f2392268301df71da",
     "coverage.py": "20206fdeed7b4c1f5e06d19008e59b5e3cc7174de14d2c39e0a1d99a79c2a79e",
     "simulate.py": "2b0e80ace3a9ff4210c5e86770c075925415c55e5e588e26e181a2207622d551",
-    "modeling/rules.md": "5ec746d55ef771233f65f16593c4be9819ea2b7d47200370d7c42a9227caea25",
+    # 已先验证归档与原文件逐字节相同；哈希值不变，只迁移路径。
+    "docs/sim_rules_T1.1.md": "5ec746d55ef771233f65f16593c4be9819ea2b7d47200370d7c42a9227caea25",
 }
 A1_WAVE = {"数量": 10, "血量": 1700, "速度": 20, "出发间隔": 10}
 COVERAGE_TOL_M = 1e-8  # 沿用 coverage.py 的区间合并容差，单位米。
@@ -39,7 +40,8 @@ COVERAGE_TOL_M = 1e-8  # 沿用 coverage.py 的区间合并容差，单位米。
 def _hashes():
     """无参数；返回基线文件与验证脚本的原始、LF 归一化 SHA-256。"""
     result = {}
-    for name in [*BASELINE_LF, "validate_t12.py"]:
+    # 统一规则独立留痕；不得拿新规则替换原T1.1实现说明的版本锁。
+    for name in [*BASELINE_LF, "modeling/rules.md", "validate_t12.py"]:
         raw = (ROOT / name).read_bytes()
         result[name] = {
             "原始字节": hashlib.sha256(raw).hexdigest(),
@@ -227,6 +229,8 @@ def run_validation():
                  "NumPy版本": np.__version__, "系统": platform.platform()},
         "随机种子": 42, "随机性说明": "固定场景，无随机采样，也不按结果搜索或调整布局。",
         "运行前SHA256": before, "运行后SHA256": after,
+        "规则归档核验证据": "handoffs/rules-archive-proof.json",
+        "当前统一规则": "modeling/rules.md",
         "基线一致": baseline_ok, "源码未变": unchanged,
         "校验": cases, "失败项": failed, "全部通过": not failed,
         "验证内部耗时秒": time.perf_counter() - started,
