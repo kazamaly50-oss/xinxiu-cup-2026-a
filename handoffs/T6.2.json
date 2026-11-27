@@ -1,0 +1,21 @@
+{
+  "任务": "T6.2",
+  "图件与承伤图源": [
+    "results\\figures\\a1-annealing.png",
+    "results\\figures\\a1-enemy-curves.csv",
+    "results\\figures\\a1-enemy-health.png",
+    "results\\figures\\a1-layout.png"
+  ],
+  "绘图字体": "Microsoft YaHei",
+  "dpi": 300,
+  "布局源": "results\\t3.2\\best-layout.json",
+  "退火曲线源": "results\\t3.2\\convergence.csv",
+  "承伤逐敌源": "simulate.py，dt=0.05，结局与 T3.2 逐敌日志一致",
+  "运行时间秒": 3.043526599998586,
+  "状态": {
+    "AI已运行": "已完成实测",
+    "Hermes审核": "待 Hermes 事后复核",
+    "真人复核": "待完成",
+    "队长验收": "待完成"
+  }
+}
