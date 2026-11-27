@@ -1,0 +1,14 @@
+test_certificate (test_a1_verification.DamageBoundTests.test_certificate) ... ok
+test_outward_interval_bounds (test_a1_verification.DamageBoundTests.test_outward_interval_bounds) ... ok
+test_boundaries_and_invalid_inputs (test_a1_verification.LayoutTests.test_boundaries_and_invalid_inputs) ... ok
+test_distance_measurement_switch (test_a1_verification.LayoutTests.test_distance_measurement_switch) ... ok
+test_invalid_layout_stops_before_simulation (test_a1_verification.LayoutTests.test_invalid_layout_stops_before_simulation) ... ok
+test_map_boundary_switch (test_a1_verification.LayoutTests.test_map_boundary_switch) ... ok
+test_report_records_requested_convention (test_a1_verification.LayoutTests.test_report_records_requested_convention) ... ok
+test_same_count_different_enemy_triggers_refinement (test_a1_verification.LayoutTests.test_same_count_different_enemy_triggers_refinement) ... ok
+test_unresolved_instability (test_a1_verification.LayoutTests.test_unresolved_instability) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.464s
+
+OK

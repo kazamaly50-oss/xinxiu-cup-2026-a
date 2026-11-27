@@ -1,0 +1,95 @@
+{
+  "时间": "2026-11-27T20:51:45+08:00",
+  "环境": {
+    "解释器": "D:\\AnacondaDownload\\Anaconda Navigator\\python.exe",
+    "Python": "3.14.6",
+    "numpy": "2.4.6",
+    "系统": "Windows-11-10.0.26200-SP0",
+    "pulp": "未安装（No module named 'pulp'）"
+  },
+  "执行": {
+    "geometry": {
+      "argv": [
+        "geometry.py"
+      ],
+      "退出码": 0,
+      "秒": 0.116,
+      "stdout字节": 97,
+      "stderr尾": ""
+    },
+    "coverage": {
+      "argv": [
+        "coverage.py"
+      ],
+      "退出码": 0,
+      "秒": 0.252,
+      "stdout字节": 104,
+      "stderr尾": ""
+    },
+    "simulate": {
+      "argv": [
+        "simulate.py"
+      ],
+      "退出码": 0,
+      "秒": 1.223,
+      "stdout字节": 2281,
+      "stderr尾": ""
+    },
+    "a1_tests": {
+      "argv": [
+        "-m",
+        "unittest",
+        "-v",
+        "test_a1_verification"
+      ],
+      "退出码": 0,
+      "秒": 0.655,
+      "stdout字节": 0,
+      "stderr尾": "outTests.test_report_records_requested_convention) ... ok\ntest_same_count_different_enemy_triggers_refinement (test_a1_verification.LayoutTests.test_same_count_different_enemy_triggers_refinement) ... ok\ntest_unresolved_instability (test_a1_verification.LayoutTests.test_unresolved_instability) ... ok\n\n----------------------------------------------------------------------\nRan 9 tests in 0.464s\n\nOK\n"
+    },
+    "a1_bounds": {
+      "argv": [
+        "a1_bounds.py"
+      ],
+      "退出码": 0,
+      "秒": 0.48,
+      "stdout字节": 1840,
+      "stderr尾": ""
+    },
+    "a1_candidate": {
+      "argv": [
+        "verify_a1.py",
+        "results/a1-candidate.json"
+      ],
+      "退出码": 0,
+      "秒": 2.22,
+      "stdout字节": 7130,
+      "stderr尾": ""
+    },
+    "a1_candidate_center_edge": {
+      "argv": [
+        "verify_a1.py",
+        "results/a1-candidate.json",
+        "--map-boundary",
+        "center_in_map",
+        "--distance-basis",
+        "edge"
+      ],
+      "退出码": 0,
+      "秒": 2.323,
+      "stdout字节": 7127,
+      "stderr尾": ""
+    },
+    "m1": {
+      "argv": [
+        "validate_t12.py",
+        "--output",
+        "D:\\Hermes\\cache\\scratch\\rev27\\out\\T1.2-hermes.json"
+      ],
+      "退出码": 0,
+      "秒": 1.129,
+      "stdout字节": 322,
+      "stderr尾": ""
+    }
+  }
+}
