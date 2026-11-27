@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "question_id": "Q1",
+  "rigor_profile": "lean",
+  "current_gate": "G1",
+  "status": "parsed_classified_waiting_human_framing",
+  "artifacts": {
+    "parse": "planning/parse/problem_parse.json",
+    "classification": "planning/classification/problem_classification.json",
+    "method_card": null,
+    "decision_ledger": null,
+    "risk_probe": null,
+    "latest_run": null
+  },
+  "allowed": {
+    "code_generation": false,
+    "freeze": false,
+    "paper_writing": false,
+    "final_assembly": false
+  },
+  "blockers": [
+    "Q1-AMB1 目标选择时间语义未由人确认",
+    "Q1 成功标准未由人确认",
+    "GitHub 仓库未能读取，可能存在需对齐的既有文件"
+  ],
+  "next_action": {
+    "owner": "human",
+    "skill": "decision-prompt-builder",
+    "reason": "framing choice (target-rule semantics, success criteria) not recorded"
+  },
+  "updated_at": "2026-11-25T21:10:47+08:00"
+}

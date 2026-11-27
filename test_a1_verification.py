@@ -105,9 +105,14 @@ class LayoutTests(unittest.TestCase):
             report = verify.verify_layout([(400, 200, "小塔")],
                                           map_boundary="center_in_map", distance_basis="edge")
         self.assertEqual(report["合法性"]["口径"], {
-            "地图边界": "center_in_map", "距离基准": "edge", "允许相切": True, "状态": "口径待裁定",
+            "地图边界": "center_in_map", "距离基准": "edge", "允许相切": True,
+            "道路模型": "中心折线半径5m缓冲区域", "状态": "未采用的对照口径",
         })
         simulation.assert_not_called()
+        # 只核验报告状态更新；既有距离、边界及相切判据保持不变。
+        for basis in ("center", "edge"):
+            confirmed = verify.validate_layout([], distance_basis=basis)["口径"]
+            self.assertEqual(confirmed["状态"], "已确认（队长裁定）")
 
     @staticmethod
     def snapshot(step, leaked):

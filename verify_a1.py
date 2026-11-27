@@ -15,7 +15,8 @@ from simulate import simulate
 
 BASE_RADIUS = 10
 ROAD_HALF_WIDTH = 5
-# 口径待裁定。默认保留既有布局检查，两个开关可独立选择。
+# 2026-11-27队长确认：完整塔基入界、允许相切、中心线5m缓冲道路。
+# 其他地图边界选项保留作对照；center/edge只是等价距离表达，不改变基座尺寸。
 MAP_BOUNDARIES = ("center_in_map", "base_in_map")
 DISTANCE_BASES = ("center", "edge")
 DEFAULT_MAP_BOUNDARY = "base_in_map"
@@ -89,7 +90,10 @@ def validate_layout(towers, *, map_boundary=DEFAULT_MAP_BOUNDARY,
     return {"通过": not violations, "问题": violations, "总花费元": cost,
             "剩余资金元": BUDGET - cost, "数量": dict(counts),
             "口径": {"地图边界": map_boundary, "距离基准": distance_basis,
-                     "允许相切": True, "状态": "口径待裁定"}}
+                     "允许相切": True,
+                     "道路模型": "中心折线半径5m缓冲区域",
+                     "状态": "已确认（队长裁定）" if map_boundary == "base_in_map"
+                     else "未采用的对照口径"}}
 
 
 def _snapshot(towers, step):

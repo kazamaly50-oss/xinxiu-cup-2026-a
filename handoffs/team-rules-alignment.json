@@ -1,0 +1,106 @@
+{
+  "任务": "队内规则与成果对齐",
+  "日期": "2026-11-27T20:07:17+08:00",
+  "执行代码提交": "57fcaf0abd4a80cdd576f06ac92624d6e82046ae",
+  "分支": "codex/team-rules-alignment",
+  "远端核验": {
+    "refs/heads/codex/a1-verification": "91c7a8a514edab0a4e5b1c98ce3993443a144415",
+    "refs/heads/codex/t1-2-validation": "40d0a920b8677d5cc4f2f5f7bf7552ffc5a81378",
+    "refs/heads/main": "9c19e3a8a86fefebbfcd00388344d7000b00b4fe",
+    "refs/heads/modeling/rules-v1": "0563c1d721bd807e9976ae7698a4fd40fdbb0b13"
+  },
+  "PR": {
+    "A1": "https://github.com/kazamaly50-oss/xinxiu-cup-2026-a/pull/5",
+    "T1.2": "https://github.com/kazamaly50-oss/xinxiu-cup-2026-a/pull/6"
+  },
+  "文件SHA256": {
+    "results/T1.2-aligned.json": "a834d078b34bc6a5a0f7eebd11c6b46113cc309646039c66bb652ebad6432174",
+    "results/a1-verification-aligned.json": "d294474b5524722be3115b31a7decc807a20fe2d2945a15d3f3002d6ea53717a",
+    "results/alignment-validation.json": "6736274a34b4fee1cce18f511a3ae9b328c6151defb189fab6a333424fea7b41",
+    "handoffs/T1.2-aligned.json": "f67e5c3f690488188f2a69a35c0073fc9b77c5ede68016ddc6264ace5e6acf9b",
+    "handoffs/rules-source-check.json": "19ac829448c0902658cce58dcfb5990c2e691e1e330f3a760130d8dc8bdfecad",
+    "handoffs/rules-archive-proof.json": "c18e5094cca9531d8624a0c6db85788922e9d38dab2a0a6f1fe9f7993855a168",
+    "handoffs/alignment-integrity.json": "ef7f88128ca30841cfc6d3107ad60ee5b6b4087221b30098f9643f1b2b93291f",
+    "handoffs/rules-alignment-diff.md": "fb3845e8209fe5a02229ebb0cf8fff9d82dd2cffa4385e03cf6aa6db28a24898",
+    "modeling/rules.md": "d8b0511d65d260c34c40ca952abdb1d0914659679473046e7bccfc661da47e0d",
+    "handoffs/history/alignment-integrity-failure-2026-11-27.json": "a607e597e91434561fd51392ff1d60029e2665ff044adf35d43cb2b5e0e86d41",
+    "handoffs/alignment-integrity-recovery.json": "8826fa2f9ee384601a6854493e19cb6ae1c7a1c439057d6a61ca8eba9caf5905",
+    "handoffs/team-rules-alignment.md": "784b7468c042a659feac51267b93be79a554b87c4bb81f97470f4fc5dad90e45",
+    "handoffs/Hermes-checklist-2026-11-27.md": "46326c6dddad99a9f949d22719d50d242e340f82a34cb6f3d00d2f9d32c87c93",
+    "modeling/ai_ledger.md": "6e43fef38e5cb77e72713e95db0f8bad0f04c5f74577bbd1851a5a92a92055bf",
+    "results/a1-verification.json": "c9f4fd6cc9f28eb9843e2d8d3f2fb8b9b6c5be220d4568d397982dc3a0d348f8",
+    "results/a1-candidate.json": "7d79bd441630484dd56e97438a70407c9919910a2154accca1b9ac8d8bfe4c0a"
+  },
+  "M1摘要": {
+    "解析对拍": {
+      "理论伤害": 245.96747752497686,
+      "仿真伤害": 246.0,
+      "相对误差百分数": 0.013222266354233864,
+      "通过": true
+    },
+    "步长收敛": {
+      "dt=0.1漏怪": 8,
+      "dt=0.05漏怪": 8,
+      "通过": true
+    },
+    "极端情况": "两项测试通过；全覆盖为非问题一可行方案，数值只保留在测试明细，不纳入结果汇总。"
+  },
+  "A1摘要": {
+    "花费元": 1850,
+    "漏怪数": [
+      8,
+      8
+    ],
+    "最大步长血量差HP": 0.599999999966883,
+    "总伤害上界HP": 16710.0,
+    "上界状态": "程序已运行，推导待队员复核",
+    "最优性": "未证明最优"
+  },
+  "临界复跑说明": "已按临界复跑规则以 dt=0.01 复跑、结论不变",
+  "各进程运行时间": {
+    "M1": {
+      "秒": 3.298090900061652,
+      "展示": "3.3 s"
+    },
+    "A1回归": {
+      "秒": 1.8431263999082148,
+      "展示": "1.8 s"
+    },
+    "A1上界": {
+      "秒": 1.0295829999959096,
+      "展示": "1.0 s"
+    },
+    "1850元候选": {
+      "秒": 6.02214020001702,
+      "展示": "6.0 s"
+    }
+  },
+  "合计运行时间": "12.2 s",
+  "合计运行时间秒": 12.192940499982797,
+  "失败项": [
+    {
+      "检查": "两个历史A1 JSON与原工作树严格字节比较",
+      "原因": "Git检出换行转换，原工作树LF与对齐工作树CRLF不同；Git内容和JSON数值相同",
+      "执行失误": "检查退出码1后未停止，误继续提交并推送9472293；随后报告并停止PR创建",
+      "历史证据": "handoffs/history/alignment-integrity-failure-2026-11-27.json",
+      "用户后续授权": "继续工作",
+      "处理": "从原A1工作树恢复两个文件原始字节，保持严格原断言复核",
+      "恢复证据": "handoffs/alignment-integrity-recovery.json",
+      "当前状态": "已恢复；原断言复核通过；未改判据或容差",
+      "逐敌差异": "无，JSON内容与Git blob未变"
+    }
+  ],
+  "状态": {
+    "AI已运行": "M1/A1实际运行通过；发布字节检查曾失败，获授权恢复后原断言通过",
+    "Hermes审核报告已收到": "T0.1/T0.2/T1.1历史报告已收到；新M1/A1/对齐待审",
+    "真人复核": "待完成",
+    "队长验收": "几何假设及继续恢复已授权；成果待验收"
+  },
+  "队群消息": "未发送",
+  "main合并": "未执行",
+  "选题门槛": "保留，先复核证据再裁定",
+  "交付恢复时间": "2026-11-27T20:22:17+08:00",
+  "未解决失败项": [],
+  "完整性复核耗时秒": 3.2355242000194266,
+  "完整性复核计时说明": "本次恢复与完整性复核，不包含此前M1/A1仿真实测，不计入其12.2s。"
+}
